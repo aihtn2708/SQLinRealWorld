@@ -1,4 +1,5 @@
-Using CROSS JOIN, we transformed product status intervals into daily records. This approach is crucial for preparing data for analytics with systems like ERP, and Distribution/Sales Management System, which store data such as product availability or material prices with valid-from and valid-to dates, ensuring accurate daily records without storing daily transactions. 
+Using CROSS JOIN, we can transform product status intervals into daily records. This approach is crucial for preparing data for analytics with systems like ERP, and Distribution/Sales Management System, which store data such as product availability or material prices with valid-from and valid-to dates, ensuring accurate daily records without storing daily transactions. 
+Eg:
 ![image](https://github.com/aihtn2708/SQLinRealWorld/assets/17986030/b551809e-46f0-4893-b0b8-a8aa08a6f376)
 This approach leverages a CROSS JOIN to generate all possible date combinations and then filters them according to the status periods defined in the ProductStatus table.
 
