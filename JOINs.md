@@ -92,7 +92,7 @@ WHERE
 ```
 
 ## 2. LEFT JOIN
-Example: List all products with their promotions, including products without any promotions.
+Example: List all products with their promotions, including products without any promotions
 
 This query retrieves all products, including those without any active promotions. Products without promotions will have NULL values for the promotion details.
 ```sql
@@ -185,3 +185,13 @@ ORDER BY
     pp1.promotion_id, 
     pp2.promotion_id;
 ```
+The result of this query will list products that are linked to multiple promotions, along with the details of those promotions.
+This result shows that Product A is linked to both the Spring Sale and the Summer Sale, and Product B is linked to both the Winter Discount and Black Friday promotions.
+This approach allows you to identify and analyze products that are part of multiple promotional campaigns, which can be useful for marketing and sales strategies.
+
+| product_id | product_name | promotion1_id | promotion1_name | promotion2_id | promotion2_name |
+|------------|---------------|---------------|-----------------|---------------|-----------------|
+| 1          | Product A     | 101           | Spring Sale     | 102           | Summer Sale     |
+| 2          | Product B     | 103           | Winter Discount | 104           | Black Friday    |
+| 1          | Product A     | 102           | Summer Sale     | 101           | Spring Sale     |
+| 2          | Product B     | 104           | Black Friday    | 103           | Winter Discount |
