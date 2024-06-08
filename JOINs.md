@@ -67,10 +67,11 @@ Ref: promotion_products.product_id > products.product_id
 Ref: promotion_products.promotion_id > promotions.promotion_id
 Ref: sales.product_id > products.product_id
 ```
+# **USE CASE**
 
 Below is the use case of e-commerce SKU promotion management with examples of different types of SQL JOINs (INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN, and CROSS JOIN).
 
-# 1. INNER JOIN
+## 1. INNER JOIN
 **Example: Retrieve current promotions for each product
 
 This query retrieves details of products that are currently under promotion. Only products with active promotions will be included in the results.
@@ -159,7 +160,6 @@ FROM
     products p
 CROSS JOIN promotions pr;
 ```
-
 
 ## 6. SELF JOIN
 Example: Finding Products with Multiple Promotions
