@@ -174,7 +174,7 @@ ORDER BY TotalSold DESC
 LIMIT 10;
 ```
 
-# 4. Analyzing Stock Aging
+## 4. Analyzing Stock Aging
 Identify products that have been in stock for more than 180 days and their remaining quantities.
 >Identifies products in stock for more than 180 days, ensuring they have a positive stock.
 ```sql
