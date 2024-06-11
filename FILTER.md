@@ -1,3 +1,33 @@
+# Tables:
+
+## Products Table:
+
+- ProductID: Primary key, auto-incremented.
+- ProductName: Name of the product.
+- CategoryID: Foreign key referencing the Categories table.
+- Unit: Unit of measure for the product.
+- Price: Price of the product.
+- DateReceived: Date the product was received.
+
+## StockMovements Table:
+
+- MovementID: Primary key, auto-incremented.
+- ProductID: Foreign key referencing the Products table.
+- MovementType: Type of movement, either 'IN' or 'OUT'.
+- Quantity: Quantity of the product moved.
+- MovementDate: Date of the movement.
+
+## Categories Table:
+
+- CategoryID: Primary key, auto-incremented.
+- CategoryName: Name of the category.
+
+## Relationships:
+
+The Products table references the Categories table via CategoryID.
+
+The StockMovements table references the Products table via ProductID.
+
 # ERD
 ![image](https://github.com/aihtn2708/SQLinRealWorld/assets/17986030/f1a6c64f-d2cf-496a-9ce0-572f3867f04d)
 
@@ -104,8 +134,9 @@ AND c.CategoryName = 'Electronics'
 | 2         | Smartphone  | 1          | Electronics  | pcs  | 700   | 2023-01-15   |
 | 4         | Monitor     | 1          | Electronics  | pcs  | 300   | 2023-02-01   |
 
-
-# 1. Finding Products with Low Stock
+# USE CASE
+Below is the use case of inventory management with examples of different types of filtering WHERE, HAVING, ON.
+## 1. Finding Products with Low Stock
 Identify products with current stock below a certain threshold (e.g., 50 units).
 >Uses a HAVING clause to filter products with a calculated current stock below 50 units.
 ```sql
@@ -117,7 +148,7 @@ GROUP BY p.ProductID, p.ProductName
 HAVING CurrentStock < 50;
 ```
 
-# 2. Checking Stock Levels by Category
+## 2. Checking Stock Levels by Category
 Get the total stock for each product category.
 >Aggregates total stock for each product category using a GROUP BY clause.
 ```sql
@@ -129,7 +160,7 @@ JOIN StockMovements sm ON p.ProductID = sm.ProductID
 GROUP BY c.CategoryID, c.CategoryName;
 ```
 
-# 3. Identifying Fast-Moving Products
+## 3. Identifying Fast-Moving Products
 Find products with the highest quantity sold in the last 30 days.
 >Filters and orders products by total quantity sold in the last 30 days.
 ```sql
@@ -157,7 +188,7 @@ GROUP BY p.ProductID, p.ProductName, p.DateReceived
 HAVING CurrentStock > 0;
 ```
 
-# 5. Monitoring Restocking Needs
+## 5. Monitoring Restocking Needs
 Identify products that need to be restocked based on minimum stock levels.
 >Filters products that need to be restocked based on a minimum stock level threshold.
 ```sql
