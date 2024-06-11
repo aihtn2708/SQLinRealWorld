@@ -117,7 +117,7 @@ HAVING SUM(sm.Quantity) > 100;
 | 1          | Electronics  | 160           |
 | 2          | Accessories  | 150           |
 
-### ON Clause
+## ON Clause
 Purpose: Used to specify join conditions between tables.
 When to Use: When you need to define how two tables should be joined.
 Scope: Applies to rows being joined between tables.
