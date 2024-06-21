@@ -1,6 +1,6 @@
 # Background
 
-In the logistics and delivery industry, managing and monitoring the success rate of deliveries is crucial for maintaining customer satisfaction and operational efficiency. One key metric to track is the ratio of failed deliveries over different periods, such as weekly and monthly. This helps in identifying patterns, potential issues, and areas for improvement in the delivery process.
+In the logistics industry, managing and monitoring the success rate of deliveries is crucial for maintaining customer satisfaction and operational efficiency. One key metric to track is the ratio of failed deliveries over different periods, such as weekly and monthly. This helps in identifying patterns, potential issues, and areas for improvement in the delivery process.
 
 The objective is to analyze the failed delivery ratio for different services (e.g., bike, truck) over weekly and monthly periods. The failed delivery ratio is calculated as the number of failed deliveries divided by the total number of orders created in the same period. By summarizing this information, we can gain insights into the performance and reliability of different delivery services over time.
 
