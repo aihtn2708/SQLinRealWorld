@@ -125,18 +125,18 @@ The final result combines the weekly and monthly summaries using the UNION ALL o
 | 2023-06-01 | month | truck      | 0.035       |
 
 
-# Benefit:
+# Benefit
 Combining weekly and monthly summaries into a single table offers several benefits:
 
-Comprehensive Overview: Provides a complete view of failed delivery ratios across different periods, enabling quick comparisons.
+**Comprehensive Overview:** Provides a complete view of failed delivery ratios across different periods, enabling quick comparisons.
 
-Simplified Analysis: Makes filtering and aggregating data easier, supporting straightforward queries and data manipulation.
+**Simplified Analysis:** Makes filtering and aggregating data easier, supporting straightforward queries and data manipulation.
 
-Enhanced Flexibility: Allows switching between weekly and monthly views effortlessly, helping identify short-term and long-term trends.
+**Enhanced Flexibility:** Allows switching between weekly and monthly views effortlessly, helping identify short-term and long-term trends.
 
-Improved Data Management: Reduces redundancy and inconsistencies, ensuring uniform data storage and access.
+**Improved Data Management:** Reduces redundancy and inconsistencies, ensuring uniform data storage and access.
 
-Streamlined Reporting: Facilitates report generation with both weekly and monthly metrics, beneficial for dashboards and reporting tools.
+**Streamlined Reporting:** Facilitates report generation with both weekly and monthly metrics, beneficial for dashboards and reporting tools.
 
 Example Use Case: A logistics manager can quickly demonstrate delivery performance over short and long periods, aiding informed decision-making.
 
