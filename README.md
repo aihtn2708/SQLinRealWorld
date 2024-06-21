@@ -11,3 +11,12 @@ Whether you're a business analyst, marketer, data enthusiast, or simply looking 
 This repository is your one-stop shop for mastering SQL through practical application. We'll guide you from the ground up, starting with the fundamental building blocks of SQL. With a solid foundation in place, we'll dive into real-world business use cases, showcasing how SQL is used to solve everyday problems. By the end, you'll be equipped to translate business needs into effective SQL queries, empowering you to tackle data challenges independently.
 
 Stay tuned for upcoming installments in the SQLinRealWorld series! We'll be delving into specific use cases, providing step-by-step guidance, and equipping you with the practical skills to leverage SQL effectively in your daily business operations.
+
+
+# [JOIN](https://github.com/aihtn2708/SQLinRealWorld/blob/main/JOINs.md)
+  ## [CROSSJOIN](https://github.com/aihtn2708/SQLinRealWorld/blob/main/CROSSJOIN.md)
+
+# [FILTER](https://github.com/aihtn2708/SQLinRealWorld/blob/main/FILTER.md)
+
+# [UNION](https://github.com/aihtn2708/SQLinRealWorld/blob/main/FILTER.md)
+
