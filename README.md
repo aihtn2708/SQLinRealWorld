@@ -16,5 +16,5 @@ Stay tuned for upcoming installments in the SQLinRealWorld series! We'll be delv
 
 # [FILTER](https://github.com/aihtn2708/SQLinRealWorld/blob/main/FILTER.md)
 
-# [UNION](https://github.com/aihtn2708/SQLinRealWorld/blob/main/FILTER.md)
+# [UNION](https://github.com/aihtn2708/SQLinRealWorld/blob/main/UNION.md)
 
