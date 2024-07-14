@@ -10,7 +10,8 @@ Stay tuned for upcoming installments in the SQLinRealWorld series! We'll break d
 
 
 # [JOIN](https://github.com/aihtn2708/SQLinRealWorld/blob/main/JOINs.md)
-  ## [CROSSJOIN](https://github.com/aihtn2708/SQLinRealWorld/blob/main/CROSSJOIN.md)
+  ## [CROSS JOIN](https://github.com/aihtn2708/SQLinRealWorld/blob/main/CROSSJOIN.md)
+  ## [FULL OUTER JOIN](https://github.com/aihtn2708/SQLinRealWorld/blob/main/FULLOUTERJOIN.md)
 
 # [FILTER](https://github.com/aihtn2708/SQLinRealWorld/blob/main/FILTER.md)
 
