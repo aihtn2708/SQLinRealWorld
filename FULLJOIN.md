@@ -1,5 +1,7 @@
 An full outer join is a method of combining tables so that the result includes unmatched rows of both tables. If you are joining two tables and want the result set to include unmatched rows from both tables, use a FULL OUTER JOIN clause. The matching is based on the join condition. 
 
+![image](https://github.com/user-attachments/assets/f22681cf-62f2-48ab-b2e9-2910e1ecd862)
+
 
 In this use case, we aim to analyze the historical and current supply/demand (S/D) ratio for products in an inventory system. The goal is to understand past risks and manage current inventory levels effectively. We utilize data from three key sources:
 
