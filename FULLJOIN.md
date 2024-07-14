@@ -1,3 +1,5 @@
+An full outer join is a method of combining tables so that the result includes unmatched rows of both tables. If you are joining two tables and want the result set to include unmatched rows from both tables, use a FULL OUTER JOIN clause. The matching is based on the join condition. 
+
 
 In this use case, we aim to analyze the historical and current supply/demand (S/D) ratio for products in an inventory system. The goal is to understand past risks and manage current inventory levels effectively. We utilize data from three key sources:
 
@@ -9,13 +11,13 @@ In this use case, we aim to analyze the historical and current supply/demand (S/
 
 ## Stock Table
 
-ProductID: Unique identifier for the product.
+- ProductID: Unique identifier for the product.
 
-ProductName: Name of the product.
+- ProductName: Name of the product.
 
-StockQuantity: Quantity of the product in stock.
+- StockQuantity: Quantity of the product in stock.
 
-StockDate: Date of the stock entry.
+- StockDate: Date of the stock entry.
 
 
 | ProductID | ProductName | StockQuantity | StockDate  |
@@ -31,19 +33,19 @@ StockDate: Date of the stock entry.
 
 ## OrderSchedule Table
 
-OrderID: Unique identifier for the order.
+- OrderID: Unique identifier for the order.
 
-OrderDate: Date of the order.
+- OrderDate: Date of the order.
 
-CustomerID: Unique identifier for the customer.
+- CustomerID: Unique identifier for the customer.
 
-ProductID: Unique identifier for the product (foreign key referencing Stock).
+- ProductID: Unique identifier for the product (foreign key referencing Stock).
 
-Quantity: Quantity of the product ordered.
+- Quantity: Quantity of the product ordered.
 
-Value: Value of the order.
+- Value: Value of the order.
 
-ShippingPoint: Warehouse from where the order will be shipped.
+- ShippingPoint: Warehouse from where the order will be shipped.
 
 | OrderID | OrderDate  | CustomerID | ProductID | Quantity | Value | ShippingPoint |
 |---------|------------|------------|-----------|----------|-------|---------------|
@@ -52,13 +54,11 @@ ShippingPoint: Warehouse from where the order will be shipped.
 | 103     | 2024-08-04 | C003       | 2         | 15       | 150   | WH1           |
 | 104     | 2024-08-05 | C004       | 3         | 20       | 200   | WH2           |
 
+## SafetyStock Table
 
+- ProductID: Unique identifier for the product (foreign key referencing Stock).
 
-SafetyStock Table
-
-ProductID: Unique identifier for the product (foreign key referencing Stock).
-
-SafetyStock: Safety stock level for the product.
+- SafetyStock: Safety stock level for the product.
 
 | ProductID | SafetyStock |
 |-----------|-------------|
@@ -70,15 +70,16 @@ SafetyStock: Safety stock level for the product.
 
 
 # Why Use FULL OUTER JOIN?
+
 Using a FULL OUTER JOIN is essential for this analysis because it allows us to:
 
-Capture Complete History: Include all products, regardless of whether they have stock entries, sales entries, or both in any given month. This comprehensive inclusion is crucial for historical analysis.
+- **Capture Complete History**: Include all products, regardless of whether they have stock entries, sales entries, or both in any given month. This comprehensive inclusion is crucial for historical analysis.
 
-Identify Risks: Capture scenarios where a product might have had stock but no sales in a specific month or sales but no stock. Identifying these gaps helps understand risks such as understocking or overstocking that occurred in the past.
+- **Identify Risks**: Capture scenarios where a product might have had stock but no sales in a specific month or sales but no stock. Identifying these gaps helps understand risks such as understocking or overstocking that occurred in the past.
 
-Comprehensive View: By combining data from both stock and order schedules, we can accurately calculate the supply/demand ratio over time, determine the stock status (understocked, overstocked, or balanced), and track changes month by month. This historical perspective helps in identifying patterns and making informed decisions to mitigate future risks.
+- **Comprehensive View**: By combining data from both stock and order schedules, we can accurately calculate the supply/demand ratio over time, determine the stock status (understocked, overstocked, or balanced), and track changes month by month. This historical perspective helps in identifying patterns and making informed decisions to mitigate future risks.
 
-Without a FULL OUTER JOIN, we risk missing critical historical data points, leading to incomplete or inaccurate insights into past inventory risks and current management needs.
+**Without a FULL OUTER JOIN**, we risk missing critical historical data points, leading to incomplete or inaccurate insights into past inventory risks and current management needs.
 
 ```sql
 WITH StockSummary AS (
