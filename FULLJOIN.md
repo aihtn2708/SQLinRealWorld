@@ -155,3 +155,104 @@ ORDER BY
 | 4         | Widget D    | 2024-07-01 | 15         | 0          | 8           | 7                 | Overstock   |
 | 4         | Widget D    | 2024-08-01 | 25         | 0          | 8           | 17                | Overstock   |
 | 5         | Widget E    | 2024-08-01 | 0          | 10         | 12          | -22               | Understock  |
+
+
+
+# Example: Impact of Not Using FULL OUTER JOIN
+To illustrate the impact of not using a FULL OUTER JOIN, let's consider alternative joins: INNER JOIN, LEFT JOIN, and RIGHT JOIN. We'll use the same tables (Stock, OrderSchedule, and SafetyStock) but with different join strategies to see what data might be missing.
+
+## Using INNER JOIN
+An INNER JOIN only includes records that have matching entries in both tables.
+```sql
+SELECT 
+    s.ProductID,
+    s.ProductName,
+    s.StockDate,
+    s.StockQuantity,
+    o.OrderID,
+    o.OrderDate,
+    o.Quantity AS OrderQuantity,
+    ss.SafetyStock
+FROM 
+    Stock s
+INNER JOIN 
+    OrderSchedule o ON s.ProductID = o.ProductID
+INNER JOIN 
+    SafetyStock ss ON s.ProductID = ss.ProductID;
+```
+<!-- Results using INNER JOIN -->
+| ProductID | ProductName | StockDate  | StockQuantity | OrderID | OrderDate  | OrderQuantity | SafetyStock |
+|-----------|-------------|------------|---------------|---------|------------|---------------|-------------|
+| 2         | Widget B    | 2024-07-01 | 20            | 101     | 2024-07-01 | 30            | 15          |
+| 2         | Widget B    | 2024-08-01 | 30            | 103     | 2024-08-04 | 15            | 15          |
+| 3         | Widget C    | 2024-07-01 | 0             | 102     | 2024-07-03 | 25            | 5           |
+| 3         | Widget C    | 2024-08-01 | 10            | 104     | 2024-08-05 | 20            | 5           |
+
+
+**Impact:** Products like Widget A and Widget D that have no corresponding sales entries in the OrderSchedule table are excluded. This incomplete data can lead to inaccurate insights, ignoring important inventory statuses.
+
+## Using LEFT JOIN
+A LEFT JOIN includes all records from the left table (Stock) and matched records from the right table (OrderSchedule).
+
+```sql
+SELECT 
+    s.ProductID,
+    s.ProductName,
+    s.StockDate,
+    s.StockQuantity,
+    o.OrderID,
+    o.OrderDate,
+    o.Quantity AS OrderQuantity,
+    ss.SafetyStock
+FROM 
+    Stock s
+LEFT JOIN 
+    OrderSchedule o ON s.ProductID = o.ProductID
+LEFT JOIN 
+    SafetyStock ss ON s.ProductID = ss.ProductID;
+```
+<!-- Results using LEFT JOIN -->
+| ProductID | ProductName | StockDate  | StockQuantity | OrderID | OrderDate  | OrderQuantity | SafetyStock |
+|-----------|-------------|------------|---------------|---------|------------|---------------|-------------|
+| 1         | Widget A    | 2024-07-01 | 50            | NULL    | NULL       | NULL          | 10          |
+| 1         | Widget A    | 2024-08-01 | 40            | NULL    | NULL       | NULL          | 10          |
+| 2         | Widget B    | 2024-07-01 | 20            | 101     | 2024-07-01 | 30            | 15          |
+| 2         | Widget B    | 2024-08-01 | 30            | 103     | 2024-08-04 | 15            | 15          |
+| 3         | Widget C    | 2024-07-01 | 0             | 102     | 2024-07-03 | 25            | 5           |
+| 3         | Widget C    | 2024-08-01 | 10            | 104     | 2024-08-05 | 20            | 5           |
+| 4         | Widget D    | 2024-07-01 | 15            | NULL    | NULL       | NULL          | 8           |
+| 4         | Widget D    | 2024-08-01 | 25            | NULL    | NULL       | NULL          | 8           |
+
+
+**Impact:** Products without corresponding sales are included, but we still miss products like Widget E that have sales but no stock data, leading to incomplete analysis.
+
+## Using RIGHT JOIN
+A RIGHT JOIN includes all records from the right table (OrderSchedule) and matched records from the left table (Stock).
+
+```sql
+SELECT 
+    s.ProductID,
+    s.ProductName,
+    s.StockDate,
+    s.StockQuantity,
+    o.OrderID,
+    o.OrderDate,
+    o.Quantity AS OrderQuantity,
+    ss.SafetyStock
+FROM 
+    Stock s
+RIGHT JOIN 
+    OrderSchedule o ON s.ProductID = o.ProductID
+RIGHT JOIN 
+    SafetyStock ss ON s.ProductID = ss.ProductID;
+```
+<!-- Results using RIGHT JOIN -->
+| ProductID | ProductName | StockDate  | StockQuantity | OrderID | OrderDate  | OrderQuantity | SafetyStock |
+|-----------|-------------|------------|---------------|---------|------------|---------------|-------------|
+| 2         | Widget B    | 2024-07-01 | 20            | 101     | 2024-07-01 | 30            | 15          |
+| 2         | Widget B    | 2024-08-01 | 30            | 103     | 2024-08-04 | 15            | 15          |
+| 3         | Widget C    | 2024-07-01 | 0             | 102     | 2024-07-03 | 25            | 5           |
+| 3         | Widget C    | 2024-08-01 | 10            | 104     | 2024-08-05 | 20            | 5           |
+| 5         | NULL        | NULL       | NULL          | 105     | 2024-08-10 | 12            | 12          |
+
+**Impact: **Products like Widget A and Widget D that have stock but no sales are excluded. Additionally, without proper handling of the safety stock join, some products might show up without necessary details.
